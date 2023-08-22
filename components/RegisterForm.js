@@ -53,12 +53,12 @@ function RegisterForm({ user, updateUser }) {
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,
-        userName: formData.username,
+        username: formData.username,
         profileImageUrl: formData.profileImageUrl,
         bio: formData.bio,
         uid: user.uid,
       };
-      editUser(collector, user.uid).then(() => router.push('/'));
+      editUser(collector, user.uid).then(() => router.push('/profile'));
     } else {
       registerUser(formData).then(() => updateUser(user.uid));
     }
