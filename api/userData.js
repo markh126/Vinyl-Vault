@@ -1,27 +1,23 @@
 import { clientCredentials } from '../utils/client';
 
-const getSingleUser = async (id) => {
-  const response = await fetch(`${clientCredentials.databaseURL}/users/${id}`, {
+const getUsers = () => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/users`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
-  });
-  const user = await response.json();
-  return user;
-};
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
 
-const createUser = async (payload) => {
-  const response = await fetch(`${clientCredentials.databaseURL}/users/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  });
-  const newUser = await response.json();
-  return newUser;
-};
+const getSingleUser = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/users/${id}`)
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
 
 const editUser = (user, uid) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/users/${user.id}`, {
@@ -36,20 +32,20 @@ const editUser = (user, uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const deleteUser = async (id) => {
-  const response = await fetch(`${clientCredentials.databaseURL}/users/${id}`, {
+const deleteUser = (id) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/users/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-  });
-  // const user = await response;
-  return response;
-};
+  })
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
 
 export {
+  getUsers,
   getSingleUser,
-  createUser,
   editUser,
   deleteUser,
 };
