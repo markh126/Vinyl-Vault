@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
@@ -30,9 +31,9 @@ RecordCard.propTypes = {
     record_image_url: PropTypes.string,
     artist: PropTypes.string,
     track_list: PropTypes.string,
-    genre: PropTypes.number,
+    genre: PropTypes.object,
     release_date: PropTypes.string,
-    user: PropTypes.number,
+    user: PropTypes.object,
   }).isRequired,
 };
 

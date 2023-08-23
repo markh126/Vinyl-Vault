@@ -17,10 +17,10 @@ function Home() {
           <Button
             variant="dark"
             type="button"
-            size="lg"
+            size="med"
             className="edit-btn"
             onClick={() => {
-              router.push('/collection');
+              router.push('/users/collection');
             }}
           >
             Let's Go!
