@@ -18,7 +18,7 @@ function Home() {
             variant="dark"
             type="button"
             size="med"
-            className="edit-btn"
+            className="collection-btn"
             onClick={() => {
               router.push('/users/collection');
             }}
