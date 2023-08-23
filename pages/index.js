@@ -20,7 +20,7 @@ function Home() {
             size="lg"
             className="edit-btn"
             onClick={() => {
-              router.push('/profile');
+              router.push('/collection');
             }}
           >
             Let's Go!

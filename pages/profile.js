@@ -32,7 +32,7 @@ export default function UserProfile() {
       </Head>
       <div className="user-profile-page">
         <Image
-          className="plant-image"
+          className="user-image"
           src={userDetails.profile_image_url}
           alt={userDetails.name}
           style={{
