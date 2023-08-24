@@ -13,7 +13,7 @@ export default function Shop() {
   const [records, setRecords] = useState([]);
 
   const getAllRecords = () => {
-    getRecordsByUser(user.id).then(setRecords);
+    getRecordsByUser(user.id, user.uid).then(setRecords);
   };
 
   useEffect(() => {
@@ -25,22 +25,27 @@ export default function Shop() {
       <Head>
         <title>My Collection</title>
       </Head>
-      <Button
-        className="new-record-btn"
-        variant="dark"
-        type="button"
-        size="med"
-        onClick={() => {
-          router.push('/users/newRecord');
-        }}
-      >
-        Add a New Record
-      </Button>
-      <div className="text-center my-4">
-        <div id="collectionCards" className="d-flex flex-wrap">
-          {records.map((record) => (
-            <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
-          ))}
+      <div id="userCollectionPage" className="userCollection-page">
+        <div className="userCollection-desc-text">
+          <h3><em>My Collection</em></h3>
+          <Button
+            className="new-record-btn"
+            variant="dark"
+            type="button"
+            size="med"
+            onClick={() => {
+              router.push('/users/newRecord');
+            }}
+          >
+            Add a New Record
+          </Button>
+          <div className="text-center my-4">
+            <div id="collectionCards" className="d-flex flex-wrap">
+              {records.map((record) => (
+                <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>

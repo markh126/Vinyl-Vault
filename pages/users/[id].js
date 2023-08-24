@@ -21,7 +21,7 @@ export default function UserProfile() {
   return (
     <>
       <Head>
-        <title>{userDetails.first_name}'s Profile</title>
+        <title>{userDetails.username}</title>
       </Head>
       <div className="user-profile-page">
         <Image
@@ -49,7 +49,7 @@ export default function UserProfile() {
             router.push(`collection/${userDetails.id}`);
           }}
         >
-          My Collection
+          View {userDetails.username}'s Collection
         </Button>
       </div>
     </>
