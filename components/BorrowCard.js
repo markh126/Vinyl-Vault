@@ -1,15 +1,13 @@
-/* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
-import { createWishlistRecord, deleteWishlistRecord } from '../api/wishlistData';
 import { useAuth } from '../utils/context/authContext';
-import { createBorrowedRecord, deleteBorrowedRecord } from '../api/borrowedData';
+import { deleteBorrowedRecord } from '../api/borrowedData';
 
-function RecordCard({ recordObj, onUpdate }) {
+function WishlistCard({ recordObj, onUpdate }) {
   const { user } = useAuth();
   const router = useRouter();
   const itemClick = () => {
@@ -18,9 +16,6 @@ function RecordCard({ recordObj, onUpdate }) {
     }
   };
 
-  const wishlistButton = () => createWishlistRecord(recordObj.id, user.uid).then(() => onUpdate());
-  const unwishlistButton = () => deleteWishlistRecord(recordObj.id, user.uid).then(() => onUpdate());
-  const borrowButton = () => createBorrowedRecord(recordObj.id, user.uid).then(() => onUpdate());
   const returnButton = () => deleteBorrowedRecord(recordObj.id, user.uid).then(() => onUpdate());
 
   return (
@@ -34,31 +29,14 @@ function RecordCard({ recordObj, onUpdate }) {
           {recordObj.artist}
         </Card.Subtitle>
       </Card.Body>
-      <div className="wishlist-btn">
-        {user.id !== recordObj.user.id ? (
-          recordObj.wishlisted ? (
-            <Button variant="outline-dark" onClick={unwishlistButton} className="unwish-btn">Remove from Wishlist</Button>
-          )
-            : (
-              <Button variant="outline-dark" onClick={wishlistButton} className="wish-btn">Add to Wishlist</Button>
-            )
-        ) : ('')}
-      </div>
-      <div className="borrowing-btn">
-        {user.id !== recordObj.user.id ? (
-          recordObj.borrowed ? (
-            <Button variant="outline-dark" onClick={returnButton} className="return-btn">Return</Button>
-          )
-            : (
-              <Button variant="outline-dark" onClick={borrowButton} className="borrow-btn">Borrow</Button>
-            )
-        ) : ('')}
+      <div className="return-btn">
+        <Button variant="outline-dark" onClick={returnButton} className="return">Return</Button>
       </div>
     </Card>
   );
 }
 
-RecordCard.propTypes = {
+WishlistCard.propTypes = {
   recordObj: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
@@ -74,4 +52,4 @@ RecordCard.propTypes = {
   onUpdate: PropTypes.func.isRequired,
 };
 
-export default RecordCard;
+export default WishlistCard;

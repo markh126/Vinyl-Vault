@@ -26,6 +26,9 @@ export default function NavBar() {
             <Link passHref href="/users/wishlist">
               <Nav.Link>Wishlist</Nav.Link>
             </Link>
+            <Link passHref href="/users/borrowed">
+              <Nav.Link>Borrowed</Nav.Link>
+            </Link>
             <Link passHref href="/users/userList">
               <Nav.Link>Users</Nav.Link>
             </Link>

@@ -17,7 +17,6 @@ function WishlistCard({ recordObj, onUpdate }) {
   };
 
   const unwishlistButton = () => deleteWishlistRecord(recordObj.id, user.uid).then(() => onUpdate());
-
   return (
     <Card className="product-card" style={{ width: '18rem', margin: '10px' }}>
       <Card.Img variant="top" src={recordObj.record_image_url} alt={recordObj.name} onClick={itemClick} style={{ height: '250px' }} />
