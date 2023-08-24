@@ -1,14 +1,13 @@
-/* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
-import { createWishlistRecord, deleteWishlistRecord } from '../api/wishlistData';
+import { deleteWishlistRecord } from '../api/wishlistData';
 import { useAuth } from '../utils/context/authContext';
 
-function RecordCard({ recordObj, onUpdate }) {
+function WishlistCard({ recordObj, onUpdate }) {
   const { user } = useAuth();
   const router = useRouter();
   const itemClick = () => {
@@ -17,7 +16,6 @@ function RecordCard({ recordObj, onUpdate }) {
     }
   };
 
-  const wishlistButton = () => createWishlistRecord(recordObj.id, user.uid).then(() => onUpdate());
   const unwishlistButton = () => deleteWishlistRecord(recordObj.id, user.uid).then(() => onUpdate());
 
   return (
@@ -32,20 +30,13 @@ function RecordCard({ recordObj, onUpdate }) {
         </Card.Subtitle>
       </Card.Body>
       <div className="wishlist-btn">
-        {user.id !== recordObj.user.id ? (
-          recordObj.wishlisted ? (
-            <Button variant="outline-dark" onClick={unwishlistButton} className="unwish">Remove from Wishlist</Button>
-          )
-            : (
-              <Button variant="outline-dark" onClick={wishlistButton} className="wish">Add to Wishlist</Button>
-            )
-        ) : ('')}
+        <Button variant="outline-dark" onClick={unwishlistButton} className="unwish">Remove from Wishlist</Button>
       </div>
     </Card>
   );
 }
 
-RecordCard.propTypes = {
+WishlistCard.propTypes = {
   recordObj: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
@@ -60,4 +51,4 @@ RecordCard.propTypes = {
   onUpdate: PropTypes.func.isRequired,
 };
 
-export default RecordCard;
+export default WishlistCard;

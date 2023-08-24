@@ -24,10 +24,6 @@ const RecordForm = ({ obj }) => {
 
   useEffect(() => {
     getGenres().then(setGenres);
-    setCurrentRecord(obj);
-  }, [obj]);
-
-  useEffect(() => {
     if (obj.id) {
       getSingleRecord(id).then((recordObj) => {
         setCurrentRecord((prevState) => ({
@@ -37,7 +33,7 @@ const RecordForm = ({ obj }) => {
           recordImageUrl: recordObj.record_image_url,
           artist: recordObj.artist,
           trackList: recordObj.track_list,
-          genreId: recordObj.genre,
+          genre: recordObj.genre.id,
           releaseDate: recordObj.release_date,
         }));
       });
@@ -61,7 +57,7 @@ const RecordForm = ({ obj }) => {
         recordImageUrl: currentRecord.recordImageUrl,
         artist: currentRecord.artist,
         trackList: currentRecord.trackList,
-        genreId: currentRecord.genreId,
+        genre: currentRecord.genre,
         releaseDate: currentRecord.releaseDate,
         userId: user.id,
       };
@@ -73,7 +69,7 @@ const RecordForm = ({ obj }) => {
         recordImageUrl: currentRecord.recordImageUrl,
         artist: currentRecord.artist,
         trackList: currentRecord.trackList,
-        genreId: currentRecord.genreId,
+        genre: currentRecord.genre,
         releaseDate: currentRecord.releaseDate,
         userId: user.id,
       };
@@ -109,13 +105,13 @@ const RecordForm = ({ obj }) => {
           <Form.Control name="releaseDate" required value={currentRecord.releaseDate} onChange={handleChange} />
         </Form.Group>
 
-        <FloatingLabel controlId="floatingSelect" label="Category">
+        <FloatingLabel controlId="floatingSelect" label="Genre">
           <Form.Select
             aria-label="Genre"
-            name="genreId"
+            name="genre"
             onChange={handleChange}
             className="mb-3"
-            value={currentRecord.genreId}
+            value={currentRecord.genre}
             required
           >
             <option value="">Select a Genre</option>
@@ -142,7 +138,7 @@ RecordForm.propTypes = {
     recordImageUrl: PropTypes.string,
     artist: PropTypes.string,
     trackList: PropTypes.string,
-    genreId: PropTypes.object,
+    genre: PropTypes.object,
     releaseDate: PropTypes.string,
   }),
 };

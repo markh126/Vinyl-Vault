@@ -20,11 +20,25 @@ const getSingleRecord = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const getRecordsByUser = (userId) => new Promise((resolve, reject) => {
+const getRecordsByUser = (userId, uid) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/records?userId=${userId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `${uid}`,
+    },
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const getRecordsByOtherUser = (userId, uid) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/user_records?userId=${userId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${uid}`,
     },
   })
     .then((response) => response.json())
@@ -73,6 +87,7 @@ export {
   getRecords,
   getSingleRecord,
   getRecordsByUser,
+  getRecordsByOtherUser,
   createRecord,
   editRecord,
   deleteRecord,

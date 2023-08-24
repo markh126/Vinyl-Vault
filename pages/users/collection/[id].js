@@ -1,44 +1,41 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
-import { getRecordsByUser } from '../../api/recordData';
-import RecordCard from '../../components/recordCard';
-import { useAuth } from '../../utils/context/authContext';
+import { getRecordsByOtherUser } from '../../../api/recordData';
+import RecordCard from '../../../components/recordCard';
+import { getSingleUser } from '../../../api/userData';
+import { useAuth } from '../../../utils/context/authContext';
 
 export default function Shop() {
-  const { user } = useAuth();
   const router = useRouter();
   const [records, setRecords] = useState([]);
+  const [userDetails, setUserDetails] = useState({});
+  const id = parseInt(router.query.id, 10);
+  const { user } = useAuth();
 
   const getAllRecords = () => {
-    getRecordsByUser(user.id, user.uid).then(setRecords);
+    getRecordsByOtherUser(id, user.uid).then(setRecords);
+  };
+
+  const getAUser = () => {
+    getSingleUser(id).then((data) => setUserDetails(data));
   };
 
   useEffect(() => {
-    getAllRecords(user.id);
+    getAllRecords(id);
+    getAUser(id);
   }, []);
 
   return (
     <>
       <Head>
-        <title>My Collection</title>
+        <title>{userDetails.username}'s Collection</title>
       </Head>
       <div id="userCollectionPage" className="userCollection-page">
         <div className="userCollection-desc-text">
-          <h3><em>My Collection</em></h3>
-          <Button
-            className="new-record-btn"
-            variant="dark"
-            type="button"
-            size="med"
-            onClick={() => {
-              router.push('/users/newRecord');
-            }}
-          >
-            Add a New Record
-          </Button>
+          <h3><em>{userDetails.username}'s Collection</em></h3>
           <div className="text-center my-4">
             <div id="collectionCards" className="d-flex flex-wrap">
               {records.map((record) => (

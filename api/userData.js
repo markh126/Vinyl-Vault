@@ -1,6 +1,6 @@
 import { clientCredentials } from '../utils/client';
 
-const getUsers = () => new Promise((resolve, reject) => {
+const getUsers = (id) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/users`, {
     method: 'GET',
     headers: {
@@ -8,7 +8,10 @@ const getUsers = () => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then(resolve)
+    .then((data) => {
+      const users = Object.values(data).filter((user) => user.id !== id);
+      resolve(users);
+    })
     .catch(reject);
 });
 

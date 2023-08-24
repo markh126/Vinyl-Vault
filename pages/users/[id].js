@@ -1,34 +1,27 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import { Button, Image } from 'react-bootstrap';
 import Head from 'next/head';
-import { useAuth } from '../utils/context/authContext';
-import { signOut } from '../utils/auth';
-import { getSingleUser, deleteUser } from '../api/userData';
+import { useRouter } from 'next/router';
+import { getSingleUser } from '../../api/userData';
 
 export default function UserProfile() {
-  const { user } = useAuth();
-  const router = useRouter();
   const [userDetails, setUserDetails] = useState({});
+  const router = useRouter();
+  const id = parseInt(router.query.id, 10);
 
-  const deleteProfile = () => {
-    if (window.confirm('Are you sure you would like to delete your profile? You cannot undo this action.')) {
-      deleteUser(user.id).then(() => signOut());
-    }
-  };
-
-  const getTheSingleUser = () => {
-    getSingleUser(user.id).then(setUserDetails);
+  const getAUser = () => {
+    getSingleUser(id).then((data) => setUserDetails(data));
   };
 
   useEffect(() => {
-    getTheSingleUser(user.id);
-  }, []);
+    getAUser(id);
+  }, [id]);
 
   return (
     <>
       <Head>
-        <title>My Profile</title>
+        <title>{userDetails.username}</title>
       </Head>
       <div className="user-profile-page">
         <Image
@@ -45,16 +38,18 @@ export default function UserProfile() {
         <h4 className="post-details-text"><em>{userDetails.username}</em> </h4>
         <h4 className="post-details-title">{userDetails.email}</h4>
         <h5 className="post-details-text">Bio: {userDetails.bio} </h5>
+      </div>
+      <div>
         <Button
-          className="profile-btn"
-          variant="outline-dark"
+          variant="dark"
+          type="button"
+          size="med"
+          className="collection-btn"
           onClick={() => {
-            router.push(`/users/edit/${userDetails.id}`);
+            router.push(`collection/${userDetails.id}`);
           }}
         >
-          Edit Profile
-        </Button>
-        <Button variant="outline-dark" className="profile-btn" style={{ marginLeft: 5 }} onClick={deleteProfile}> Delete Profile
+          View {userDetails.username}'s Collection
         </Button>
       </div>
     </>
