@@ -5,7 +5,7 @@ import { useAuth } from '../../utils/context/authContext';
 import { getWishlistRecord } from '../../api/wishlistData';
 import WishlistCard from '../../components/WishlistCard';
 
-export default function FavoriteDisplay() {
+export default function WishlistDisplay() {
   const [wishlist, setWishlist] = useState([]);
   const { user } = useAuth();
 
