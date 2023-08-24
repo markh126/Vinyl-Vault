@@ -2,12 +2,12 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { Button, Image } from 'react-bootstrap';
-// import { useAuth } from '../../utils/context/authContext';
+import { useAuth } from '../../utils/context/authContext';
 import { deleteRecord, getSingleRecord } from '../../api/recordData';
 
 export default function ViewRecord() {
   const [recordDetails, setRecordDetails] = useState({});
-  //   const { user } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
   const { id } = router.query;
 
@@ -24,7 +24,7 @@ export default function ViewRecord() {
   return (
     <>
       <Head>
-        <title>Record Details</title>
+        <title>{recordDetails.name}</title>
       </Head>
       <div className="d-flex flex-column">
         <Image
@@ -42,18 +42,21 @@ export default function ViewRecord() {
         <p className="post-content">Release Date: {recordDetails.release_date} </p>
         <p className="post-details-text">Genre: {recordDetails.genre?.label} </p>
         <div>
-          <Button
-            className="edit-btn"
-            variant="dark"
-            type="button"
-            size="sm"
-            onClick={() => {
-              router.push(`/records/edit/${recordDetails.id}`);
-            }}
-          >
-            Edit
-          </Button>
-          <Button variant="danger" size="sm" className="delete-btn" onClick={deleteThisRecord}> Delete</Button>
+          {user.id === recordDetails.user?.id ? (
+            <>
+              <Button
+                className="edit-btn"
+                variant="dark"
+                type="button"
+                size="sm"
+                onClick={() => {
+                  router.push(`/records/edit/${recordDetails.id}`);
+                }}
+              >
+                Edit
+              </Button><Button variant="danger" size="sm" className="delete-btn" onClick={deleteThisRecord}> Delete</Button>
+            </>
+          ) : ('')}
         </div>
       </div>
     </>

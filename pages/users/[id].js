@@ -1,5 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from 'react';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { getSingleUser } from '../../api/userData';
@@ -20,7 +21,7 @@ export default function UserProfile() {
   return (
     <>
       <Head>
-        <title>Profile</title>
+        <title>{userDetails.first_name}'s Profile</title>
       </Head>
       <div className="user-profile-page">
         <Image
@@ -37,6 +38,19 @@ export default function UserProfile() {
         <h4 className="post-details-text"><em>{userDetails.username}</em> </h4>
         <h4 className="post-details-title">{userDetails.email}</h4>
         <h5 className="post-details-text">Bio: {userDetails.bio} </h5>
+      </div>
+      <div>
+        <Button
+          variant="dark"
+          type="button"
+          size="med"
+          className="collection-btn"
+          onClick={() => {
+            router.push(`collection/${userDetails.id}`);
+          }}
+        >
+          My Collection
+        </Button>
       </div>
     </>
   );

@@ -28,7 +28,7 @@ export default function UserProfile() {
   return (
     <>
       <Head>
-        <title>Profile</title>
+        <title>My Profile</title>
       </Head>
       <div className="user-profile-page">
         <Image

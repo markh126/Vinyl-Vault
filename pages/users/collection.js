@@ -23,7 +23,7 @@ export default function Shop() {
   return (
     <>
       <Head>
-        <title>Collection</title>
+        <title>My Collection</title>
       </Head>
       <Button
         className="new-record-btn"
