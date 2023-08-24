@@ -26,6 +26,9 @@ export default function NavBar() {
             <Link passHref href="/users/collection">
               <Nav.Link>Collection</Nav.Link>
             </Link>
+            <Link passHref href="/users/userList">
+              <Nav.Link>Users</Nav.Link>
+            </Link>
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>
             </Link>
