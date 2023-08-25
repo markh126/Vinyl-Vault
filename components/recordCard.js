@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { createWishlistRecord, deleteWishlistRecord } from '../api/wishlistData';
 import { useAuth } from '../utils/context/authContext';
-import { createBorrowedRecord, deleteBorrowedRecord } from '../api/borrowedData';
+import { createBorrowedRecord } from '../api/borrowedData';
 
 function RecordCard({ recordObj, onUpdate }) {
   const { user } = useAuth();
@@ -21,7 +21,6 @@ function RecordCard({ recordObj, onUpdate }) {
   const wishlistButton = () => createWishlistRecord(recordObj.id, user.uid).then(() => onUpdate());
   const unwishlistButton = () => deleteWishlistRecord(recordObj.id, user.uid).then(() => onUpdate());
   const borrowButton = () => createBorrowedRecord(recordObj.id, user.uid).then(() => onUpdate());
-  const returnButton = () => deleteBorrowedRecord(recordObj.id, user.uid).then(() => onUpdate());
 
   return (
     <Card className="product-card" style={{ width: '18rem', margin: '10px' }}>
@@ -47,7 +46,7 @@ function RecordCard({ recordObj, onUpdate }) {
       <div className="borrowing-btn">
         {user.id !== recordObj.user.id ? (
           recordObj.borrowed ? (
-            <Button variant="outline-dark" onClick={returnButton} className="return-btn">Return</Button>
+            <p>This record is borrowed out.</p>
           )
             : (
               <Button variant="outline-dark" onClick={borrowButton} className="borrow-btn">Borrow</Button>
