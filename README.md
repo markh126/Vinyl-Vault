@@ -2,7 +2,7 @@
 Vinyl Vault is my full-stack capstone for Nashville Software School, cohort E21.
 This app is used to catalogue your records, view other user's collections and add those to your wishlist. Users can also borrow records from other users.
 
-## Topics
+## Links
 - [Get Started](#getting-started)
 - [Starting the Project](#starting-the-project)
 ___
