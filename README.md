@@ -1,4 +1,5 @@
 # Welcome to Vinyl Vault
+Vinyl Vault is my full-stack capstone for Nashville Software School, cohort E21.
 
 ## Topics
 - [Get Started](#getting-started)
