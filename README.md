@@ -5,6 +5,7 @@ This app is used to catalogue your records, view other user's collections and ad
 ## Links
 - [Wireframe](https://miro.com/app/board/uXjVMuTd9hQ=/#)
 - [ERD](https://dbdiagram.io/d/64acbde402bd1c4a5ed68492)
+- [Project Board](https://github.com/users/markh126/projects/7)
 ___
 ## Getting Started
 ### Use Template
