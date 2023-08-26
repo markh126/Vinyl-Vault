@@ -3,8 +3,8 @@ Vinyl Vault is my full-stack capstone for Nashville Software School, cohort E21.
 This app is used to catalogue your records, view other user's collections and add those to your wishlist. Users can also borrow records from other users.
 
 ## Links
-- [Wireframe](#https://miro.com/app/board/uXjVMuTd9hQ=/#)
-- [ERD](#https://dbdiagram.io/d/64acbde402bd1c4a5ed68492)
+- [Wireframe](https://miro.com/app/board/uXjVMuTd9hQ=/#)
+- [ERD](https://dbdiagram.io/d/64acbde402bd1c4a5ed68492)
 ___
 ## Getting Started
 ### Use Template
