@@ -1,4 +1,4 @@
-# React/Next.js Django Auth Template
+# Welcome to Vinyl Vault
 
 ## Topics
 - [Get Started](#getting-started)
