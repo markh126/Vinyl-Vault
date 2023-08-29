@@ -31,8 +31,7 @@ const spotifySearch = (token, albumTitle) => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       console.warn('Response Data:', data);
-      const albumObject = data.albums.items.find((album) => album.name === albumTitle && album.album_type === 'album');
-      resolve(albumObject);
+      resolve(data);
     })
     .catch((error) => {
       reject(error);
