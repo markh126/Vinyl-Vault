@@ -2,9 +2,16 @@
 import { useRouter } from 'next/router';
 import { Button } from 'react-bootstrap';
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { getSpotifyToken } from '../api/spotifyData';
 
 function Home() {
   const router = useRouter();
+
+  useEffect(() => {
+    getSpotifyToken();
+  }, []);
+
   return (
     <>
       <Head>

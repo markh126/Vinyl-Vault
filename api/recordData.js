@@ -34,7 +34,7 @@ const getRecordsByUser = (userId, uid) => new Promise((resolve, reject) => {
 });
 
 const getRecordsByOtherUser = (userId, uid) => new Promise((resolve, reject) => {
-  fetch(`${clientCredentials.databaseURL}/user_records?userId=${userId}`, {
+  fetch(`${clientCredentials.databaseURL}/records?userId=${userId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

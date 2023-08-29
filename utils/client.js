@@ -12,8 +12,13 @@ const clientCredentials = {
   databaseURL: process.env.NEXT_PUBLIC_DATABASE_URL,
 };
 
+const spotifyToken = {
+  clientId: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
+  clientSecret: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET,
+};
+
 if (!firebase.apps.length) {
   firebase?.initializeApp(firebaseCredentials);
 }
 
-export { firebase, clientCredentials };
+export { firebase, clientCredentials, spotifyToken };
