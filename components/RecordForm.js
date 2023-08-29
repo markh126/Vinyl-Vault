@@ -82,22 +82,22 @@ const RecordForm = ({ obj }) => {
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
-          <Form.Control name="name" required value={currentRecord.name} onChange={handleChange} />
+          <Form.Control name="name" type="text" required value={currentRecord.name} onChange={handleChange} />
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Record Image Url</Form.Label>
-          <Form.Control name="recordImageUrl" required value={currentRecord.recordImageUrl} onChange={handleChange} />
+          <Form.Control name="recordImageUrl" type="url" required value={currentRecord.recordImageUrl} onChange={handleChange} />
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Artist</Form.Label>
-          <Form.Control name="artist" required value={currentRecord.artist} onChange={handleChange} />
+          <Form.Control name="artist" type="text" required value={currentRecord.artist} onChange={handleChange} />
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Track List</Form.Label>
-          <Form.Control name="trackList" required value={currentRecord.trackList} onChange={handleChange} />
+          <Form.Control name="trackList" type="textarea" required value={currentRecord.trackList} onChange={handleChange} />
         </Form.Group>
 
         <Form.Group className="mb-3">

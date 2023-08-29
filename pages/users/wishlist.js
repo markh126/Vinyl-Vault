@@ -32,7 +32,6 @@ export default function WishlistDisplay() {
                 <WishlistCard key={wishRecord.id} recordObj={wishRecord.record} onUpdate={getWishlist} />
               ))}
             </div>
-            {console.warn(wishlist)}
           </div>
         </div>
       </div>
