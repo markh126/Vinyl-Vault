@@ -1,44 +1,35 @@
-# React/Next.js Django Auth Template
+# Welcome to Vinyl Vault
+Vinyl Vault is my full-stack capstone for Nashville Software School, cohort E21.
+This app is used to catalogue your records, view other user's collections and add those to your wishlist. Users can also borrow records from other users.
 
-## Topics
-- [Get Started](#getting-started)
-- [Starting the Project](#starting-the-project)
+## Links
+- [Wireframe](https://miro.com/app/board/uXjVMuTd9hQ=/#)
+- [ERD](https://dbdiagram.io/d/64acbde402bd1c4a5ed68492)
+- [Project Board](https://github.com/users/markh126/projects/7)
 ___
-## Getting Started
-### Use Template
-#### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
-<img width="915" alt="Screen Shot 2022-07-06 at 12 54 01 PM" src="https://user-images.githubusercontent.com/29741570/177612998-4aac9237-5a1e-4f13-8ae0-468587521564.png">
+## Target User
+This app is tailor-made for avid collectors with an extensive archive of records, catering to their passion for music and their penchant for curating an impressive collection. Whether you're a seasoned vinyl enthusiast or a dedicated collector of various musical genres, this app is your ultimate companion.
 
-#### 2. Make sure YOUR github account is selected in the dropdown and name your project
-<img width="763" alt="Screen Shot 2022-07-06 at 12 54 48 PM" src="https://user-images.githubusercontent.com/29741570/177613126-dd38f678-7553-4f27-8a4a-75680f14d71e.png">
+## Features
+- View record collection
+- Add new records to collection
+- Update record information
+- View other users and thei collection
+- Add other users' records to your wishlist
+- Borrow records from other users
 
-#### 3. Clone your new repo to your local machine
-#### 4. Go to the **NEXT** section
-
-## Starting the Project
-1. Create a Firebase project and set up authentication. Use [these videos](https://vimeo.com/showcase/codetracker-firebase) as a refresher if needed.
-1. Create a `.env` file at the root of the project
-1. Copy/Paste the contents of the `.env.sample` file to your newly created `.env` file.
-1. Copy over all of your Firebase values into the `.env` file.
-1. Open the `package.json` file and change the `name` property to the name of your application, and `author` to  your name.
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short.
-1. Next, run `npm run prepare`. This command sets up husky to track eslint errors on commit that will make your deploy fail on Netlify.
-1. To start your application, run `npm run dev`. THIS IS THE COMMAND YOU WILL USE TO RUN YOUR DEVELOPMENT SERVER FROM NOW ON.
-1. Open [http://localhost:3000](http://localhost:3000) with your browser.
-
-### If you see this, you are set to go!
-<img width="450" alt="Screen Shot 2022-07-06 at 1 07 27 PM" src="https://user-images.githubusercontent.com/29741570/177615077-9b6a75bc-0260-4d29-bb88-bd95a3140687.png">
+### Screenshots
+Homepage/Collection
+![Screenshot 2023-08-26 at 11 06 59 AM](https://github.com/markh126/Vinyl-Vault/assets/114036621/4ada6e9c-8b53-4f38-90d9-931575641a0e)
+Wishlist(From other users' records)
+![Screenshot 2023-08-26 at 11 09 30 AM](https://github.com/markh126/Vinyl-Vault/assets/114036621/88fc2dc6-0111-421a-91e2-78e9241ddd00)
+Other Users Profile Page(With link to their collection)
+![Screenshot 2023-08-26 at 11 10 25 AM](https://github.com/markh126/Vinyl-Vault/assets/114036621/0c1d0bd3-3c14-4444-8a0d-65bc52fefa32)
 
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-**NOTES:** 
-- If you see the following error, you did not follow all the setup steps correctly and failed to add your Firebase creds. Go back and do that NOW.
 
-<img width="1043" alt="Screen Shot 2022-07-06 at 11 18 45 AM" src="https://user-images.githubusercontent.com/29741570/177612501-c2628f18-4bbd-4de9-aae6-27ffba1172d6.png">
         
-## Learn More about Next.js
-To learn more about Next.js, take a look at the following resources:
+## Contributors:
+- [Mark Hamilton](https://github.com/markh126)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
