@@ -42,7 +42,6 @@ export default function Shop() {
                 <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
               ))}
             </div>
-            {console.warn(records)}
           </div>
         </div>
       </div>
