@@ -13,7 +13,6 @@ const getSpotifyToken = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.warn('Response Data:', data);
       resolve(data.access_token);
     })
     .catch(reject);
@@ -30,9 +29,12 @@ const spotifySearch = (token, albumTitle) => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.warn('Response Data:', data);
-      const albumObject = data.albums.items.find((album) => album.name === albumTitle && album.album_type === 'album');
-      resolve(albumObject);
+      if (data.albums && data.albums.items) {
+        const filteredAlbums = data.albums.items.filter((album) => album.name.toLowerCase() === albumTitle.toLowerCase());
+        resolve(filteredAlbums);
+      } else {
+        resolve([]);
+      }
     })
     .catch((error) => {
       reject(error);

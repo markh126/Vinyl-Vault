@@ -34,7 +34,7 @@ export default function Shop() {
             type="button"
             size="med"
             onClick={() => {
-              router.push('/users/newRecord');
+              router.push('/users/recordSearch');
             }}
           >
             Add a New Record
