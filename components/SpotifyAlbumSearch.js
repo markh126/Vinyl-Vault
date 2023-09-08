@@ -43,6 +43,7 @@ function Search() {
           {search.map((album) => (
             <SpotifyCard key={album.id} recordObj={album} />
           ))}
+          {console.warn(search)}
         </div>
       </div>
     </>

@@ -71,7 +71,6 @@ export default function ViewRecord() {
         <h2 className="post-details-title">{recordDetails.name}</h2>
         <h5 className="post-details-title">{recordDetails.artist}</h5>
         <p className="post-content">Release Date: {recordDetails.release_date} </p>
-        <p className="post-details-text">Genre: {recordDetails.genre?.label} </p>
         <div className="track-list">
           <h3>Tracks:</h3>
           {Array.isArray(tracks.items) && tracks.items.length > 0 && (
