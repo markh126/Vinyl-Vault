@@ -4,12 +4,20 @@ import React, { useEffect, useState } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
 import { deleteRecord, getSingleRecord } from '../../api/recordData';
+import { getAlbumTracks, getSpotifyToken } from '../../api/spotifyData';
 
 export default function ViewRecord() {
   const [recordDetails, setRecordDetails] = useState({});
+  const [tracks, setTracks] = useState([]);
   const { user } = useAuth();
   const router = useRouter();
   const { id } = router.query;
+
+  const formatDuration = (durationMs) => {
+    const minutes = Math.floor(durationMs / 60000);
+    const seconds = ((durationMs % 60000) / 1000).toFixed(0);
+    return `${minutes}:${seconds}`;
+  };
 
   const deleteThisRecord = () => {
     if (window.confirm(`Do you want to remove ${recordDetails.name} from your store?`)) {
@@ -20,6 +28,29 @@ export default function ViewRecord() {
   useEffect(() => {
     getSingleRecord(id).then(setRecordDetails);
   }, [id]);
+
+  const getTracks = async () => {
+    const album = recordDetails.spotify_id;
+    const token = await getSpotifyToken();
+
+    getAlbumTracks(token, album)
+      .then((response) => {
+        if (response) {
+          setTracks(response);
+        } else {
+          alert('Error');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
+
+  useEffect(() => {
+    if (recordDetails.spotify_id) {
+      getTracks();
+    }
+  }, [recordDetails]);
 
   return (
     <>
@@ -41,6 +72,18 @@ export default function ViewRecord() {
         <h5 className="post-details-title">{recordDetails.artist}</h5>
         <p className="post-content">Release Date: {recordDetails.release_date} </p>
         <p className="post-details-text">Genre: {recordDetails.genre?.label} </p>
+        <div className="track-list">
+          <h3>Tracks:</h3>
+          {Array.isArray(tracks.items) && tracks.items.length > 0 && (
+          <ol>
+            {tracks.items.map((track) => (
+              <li key={track.id}>
+                {track.name} - {formatDuration(track.duration_ms)}
+              </li>
+            ))}
+          </ol>
+          )}
+        </div>
         <div>
           {user.id === recordDetails.user?.id ? (
             <>

@@ -30,7 +30,8 @@ function RecordCard({ recordObj, onUpdate }) {
           {recordObj.name}
         </Card.Title>
         <Card.Subtitle style={{ fontFamily: 'Crimson Text Bold', fontSize: 18 }}>
-          {recordObj.artist}
+          {recordObj.artist} <br />
+          {recordObj.release_date}
         </Card.Subtitle>
       </Card.Body>
       <div className="wishlist-btn">

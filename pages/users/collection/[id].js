@@ -7,6 +7,7 @@ import { getRecordsByOtherUser } from '../../../api/recordData';
 import RecordCard from '../../../components/recordCard';
 import { getSingleUser } from '../../../api/userData';
 import { useAuth } from '../../../utils/context/authContext';
+import DropdownFilter from '../../../components/FilterDropdown';
 
 export default function Shop() {
   const router = useRouter();
@@ -14,6 +15,7 @@ export default function Shop() {
   const [userDetails, setUserDetails] = useState({});
   const id = parseInt(router.query.id, 10);
   const { user } = useAuth();
+  const [selectedFilter, setSelectedFilter] = useState('');
 
   const getAllRecords = () => {
     getRecordsByOtherUser(id, user.uid).then(setRecords);
@@ -28,17 +30,47 @@ export default function Shop() {
     getAUser(id);
   }, []);
 
+  const handleFilterChange = (filterValue) => {
+    setSelectedFilter(filterValue);
+  };
+
+  const filteredRecords = () => {
+    if (selectedFilter === 'alpha') {
+      return [...records].sort((a, b) => a.name.localeCompare(b.name));
+    } if (selectedFilter === 'date') {
+      return [...records].sort((b, a) => new Date(a.release_date) - new Date(b.release_date));
+    } if (selectedFilter === 'artist') {
+      const groupedRecords = {};
+      records.forEach((record) => {
+        const { artist } = record;
+        if (!groupedRecords[artist]) {
+          groupedRecords[artist] = [];
+        }
+        groupedRecords[artist].push(record);
+      });
+      const sortedGroups = Object.keys(groupedRecords).sort();
+      const sortedRecords = [];
+      sortedGroups.forEach((artist) => {
+        sortedRecords.push(...groupedRecords[artist]);
+      });
+      return sortedRecords;
+    }
+
+    return records;
+  };
+
   return (
     <>
       <Head>
         <title>{userDetails.username}'s Collection</title>
       </Head>
+      <DropdownFilter onFilterChange={handleFilterChange} />
       <div id="userCollectionPage" className="userCollection-page">
         <div className="userCollection-desc-text">
           <h3><em>{userDetails.username}'s Collection</em></h3>
           <div className="text-center my-4">
             <div id="collectionCards" className="d-flex flex-wrap">
-              {records.map((record) => (
+              {filteredRecords().map((record) => (
                 <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
               ))}
             </div>
