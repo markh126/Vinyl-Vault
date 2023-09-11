@@ -2,28 +2,24 @@
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { Button, FloatingLabel, Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 import { createRecord, editRecord, getSingleRecord } from '../api/recordData';
-import getGenres from '../api/genreData';
 
 const initialState = {
   name: '',
   recordImageUrl: '',
   artist: '',
-  trackList: '',
   releaseDate: '',
 };
 
 const RecordForm = ({ obj }) => {
   const [currentRecord, setCurrentRecord] = useState(initialState);
-  const [genres, setGenres] = useState([]);
   const router = useRouter();
   const { id } = router.query;
   const { user } = useAuth();
 
   useEffect(() => {
-    getGenres().then(setGenres);
     if (obj.id) {
       getSingleRecord(id).then((recordObj) => {
         setCurrentRecord((prevState) => ({
@@ -33,7 +29,6 @@ const RecordForm = ({ obj }) => {
           recordImageUrl: recordObj.record_image_url,
           artist: recordObj.artist,
           trackList: recordObj.track_list,
-          genre: recordObj.genre.id,
           releaseDate: recordObj.release_date,
         }));
       });
@@ -56,8 +51,6 @@ const RecordForm = ({ obj }) => {
         name: currentRecord.name,
         recordImageUrl: currentRecord.recordImageUrl,
         artist: currentRecord.artist,
-        trackList: currentRecord.trackList,
-        genre: currentRecord.genre,
         releaseDate: currentRecord.releaseDate,
         userId: user.id,
       };
@@ -68,8 +61,6 @@ const RecordForm = ({ obj }) => {
         name: currentRecord.name,
         recordImageUrl: currentRecord.recordImageUrl,
         artist: currentRecord.artist,
-        trackList: currentRecord.trackList,
-        genre: currentRecord.genre,
         releaseDate: currentRecord.releaseDate,
         userId: user.id,
       };
@@ -96,32 +87,9 @@ const RecordForm = ({ obj }) => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Track List</Form.Label>
-          <Form.Control name="trackList" type="textarea" required value={currentRecord.trackList} onChange={handleChange} />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
           <Form.Label>Release Date</Form.Label>
           <Form.Control name="releaseDate" required value={currentRecord.releaseDate} onChange={handleChange} />
         </Form.Group>
-
-        <FloatingLabel controlId="floatingSelect" label="Genre">
-          <Form.Select
-            aria-label="Genre"
-            name="genre"
-            onChange={handleChange}
-            className="mb-3"
-            value={currentRecord.genre}
-            required
-          >
-            <option value="">Select a Genre</option>
-            {genres?.map((genre) => (
-              <option key={genre.label} value={genre.id}>
-                {genre.label}
-              </option>
-            ))}
-          </Form.Select>
-        </FloatingLabel>
 
         <Button variant="primary" type="submit">
           Submit
@@ -137,8 +105,6 @@ RecordForm.propTypes = {
     name: PropTypes.string,
     recordImageUrl: PropTypes.string,
     artist: PropTypes.string,
-    trackList: PropTypes.string,
-    genre: PropTypes.object,
     releaseDate: PropTypes.string,
   }),
 };

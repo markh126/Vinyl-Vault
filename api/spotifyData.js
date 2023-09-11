@@ -41,7 +41,26 @@ const spotifySearch = (token, albumTitle) => new Promise((resolve, reject) => {
     });
 });
 
+const getAlbumTracks = (token, id) => new Promise((resolve, reject) => {
+  fetch(`https://api.spotify.com/v1/albums/${id}/tracks`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      resolve(data);
+    })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
 export {
   getSpotifyToken,
   spotifySearch,
+  getAlbumTracks,
 };

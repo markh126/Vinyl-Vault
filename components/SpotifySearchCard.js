@@ -13,7 +13,7 @@ function SpotifyCard({ recordObj }) {
 
   const handleAddToCollection = async () => {
     const {
-      name, artists, release_date, images,
+      name, artists, release_date, images, id,
     } = recordObj;
 
     const record = {
@@ -21,13 +21,12 @@ function SpotifyCard({ recordObj }) {
       artist: artists[0].name,
       releaseDate: release_date,
       recordImageUrl: images[0].url,
-      spotifyId: recordObj.id,
+      spotifyId: id,
       userId: user.id,
     };
 
     try {
       await createRecord(record, user.uid);
-
       alert('Record added to collection');
     } catch (error) {
       console.error('Error adding record to collection:', error);
@@ -43,7 +42,6 @@ function SpotifyCard({ recordObj }) {
         </Card.Title>
         <Card.Subtitle style={{ fontFamily: 'Crimson Text Bold', fontSize: 18 }}>
           {recordObj.artists[0].name}<br />
-          {recordObj.release_date}
         </Card.Subtitle>
       </Card.Body>
       <Button onClick={handleAddToCollection}>Add To Collection</Button>
