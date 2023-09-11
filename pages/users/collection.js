@@ -72,7 +72,7 @@ export default function Shop() {
             Add a New Record
           </Button>
           <div className="text-center my-4">
-            <div id="collectionCards" className="d-flex flex-wrap">
+            <div id="collectionCards" className="d-flex flex-wrap collection-cards">
               {filteredRecords().map((record) => (
                 <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
               ))}

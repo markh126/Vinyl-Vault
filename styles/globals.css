@@ -18,5 +18,65 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: white;
+}
+
+.wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 6px;
+}
+
+.borrowing-btn {
+  position: absolute;
+  top: 30px;
+  right: 6px;
+}
+
+.track-list {
+  height: 285px;
+  overflow-y: scroll;
+  overflow-x:hidden;
+}
+
+.borrowedRecordContainer {
+  height: 75px;
+}
+
+.borrowedRecordContainer > button {
+  height: inherit;
+  padding-left: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.borrow-head {
+  display: flex;
+  align-items: center;
+  height: inherit;
+  white-space: nowrap;
+  text-indent: 24px;
+  width: fit-content;
+  line-height: 1.2;
+}
+
+.borrow-img {
+  height: inherit;
+  width: 72px;
+}
+
+.returnBtnContainer {
+  display: flex;
+  width: 100%;
+  padding: 4px 8px;
+  justify-content: flex-end;
+}
+
+.returnBtnContainer > .returnBtn {
+  margin: 0px 4px 0px 4px;
+}
+
+.collection-cards {
+  grid-gap: 12px;
+  margin-bottom: 15px;
 }
