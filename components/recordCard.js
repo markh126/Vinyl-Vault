@@ -7,16 +7,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
-import { Heart, HeartFill, ArrowRepeat } from 'react-bootstrap-icons';
+import {
+  Heart, HeartFill, ArrowRepeat, Trash,
+} from 'react-bootstrap-icons';
 import { createWishlistRecord, deleteWishlistRecord } from '../api/wishlistData';
 import { useAuth } from '../utils/context/authContext';
 import { createBorrowedRecord } from '../api/borrowedData';
 import { getAlbumTracks, getSpotifyToken } from '../api/spotifyData';
+import { deleteRecord } from '../api/recordData';
 
 function RecordCard({ recordObj, onUpdate }) {
   const [tracks, setTracks] = useState([]);
   const ref = useRef();
   const { user } = useAuth();
+
+  const deleteThisRecord = () => {
+    if (window.confirm(`Are you sure you would like to delete ${recordObj.name}?`)) {
+      deleteRecord(recordObj.id).then(() => onUpdate());
+    }
+  };
 
   const itemClick = () => {
     if (recordObj.id) {
@@ -90,11 +99,16 @@ function RecordCard({ recordObj, onUpdate }) {
                 )
             ) : ('')}
           </div>
+          <div className="trash-btn">
+            {user.id === recordObj.user.id ? (
+              <Trash variant="button" className="profile-btn" style={{ marginLeft: 5 }} onClick={deleteThisRecord}>Delete</Trash>
+            ) : ('')}
+          </div>
         </FrontSide>
         <BackSide onClick={() => { ref.current.toggle(); }}>
           <h3><em>{recordObj.artist}</em></h3>
           <div className="track-list">
-            <h3><em>Tracks:</em></h3>
+            <h4><em>Tracks:</em></h4>
             {Array.isArray(tracks.items) && tracks.items.length > 0 && (
             <ol>
               {tracks.items.map((track) => (

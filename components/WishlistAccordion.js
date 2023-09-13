@@ -3,15 +3,15 @@ import { Accordion, Button, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
-import { deleteBorrowedRecord } from '../api/borrowedData';
+import { deleteWishlistRecord } from '../api/wishlistData';
 import { getAlbumTracks, getSpotifyToken } from '../api/spotifyData';
 
-export default function AccordionRow({ borrowedRecord, onUpdate, keyNumber }) {
+export default function AccordionRowWishlist({ wishlistRecord, onUpdate, keyNumber }) {
   const [tracks, setTracks] = useState([]);
   const { user } = useAuth();
   const returnRecord = () => {
-    if (window.confirm(`Return ${borrowedRecord.record.name} to ${borrowedRecord.record.user.first_name}?`)) {
-      deleteBorrowedRecord(borrowedRecord.record.id, user.uid).then(() => onUpdate());
+    if (window.confirm(`Return ${wishlistRecord.record.name} to ${wishlistRecord.record.user.first_name}?`)) {
+      deleteWishlistRecord(wishlistRecord.record.id, user.uid).then(() => onUpdate());
     }
   };
 
@@ -22,7 +22,7 @@ export default function AccordionRow({ borrowedRecord, onUpdate, keyNumber }) {
   };
 
   const getTracks = async () => {
-    const album = borrowedRecord.record.spotify_id;
+    const album = wishlistRecord.record.spotify_id;
     const token = await getSpotifyToken();
 
     getAlbumTracks(token, album)
@@ -39,16 +39,16 @@ export default function AccordionRow({ borrowedRecord, onUpdate, keyNumber }) {
   };
 
   useEffect(() => {
-    if (borrowedRecord.record.spotify_id) {
+    if (wishlistRecord.record.spotify_id) {
       getTracks();
     }
-  }, [borrowedRecord]);
+  }, [wishlistRecord]);
 
   return (
     <Accordion.Item eventKey={keyNumber}>
-      <Accordion.Header className="borrowedRecordContainer">
-        <Image className="borrow-img" src={borrowedRecord.record.record_image_url} />
-        <div className="borrow-head">{borrowedRecord.record.name} - {borrowedRecord.record.artist}</div>
+      <Accordion.Header className="wishlistRecordContainer">
+        <Image className="wish-img" src={wishlistRecord.record.record_image_url} />
+        <div className="wish-head">{wishlistRecord.record.name} - {wishlistRecord.record.artist}</div>
       </Accordion.Header>
       <Accordion.Body>
         <div className="track-list">
@@ -63,16 +63,17 @@ export default function AccordionRow({ borrowedRecord, onUpdate, keyNumber }) {
           </ol>
           )}
         </div>
-        <div className="returnBtnContainer">
-          <Button className="returnBtn" variant="dark" onClick={returnRecord}>Return</Button>
+        <div className="removeWishContainer">
+          <Button className="removeWishBtn" variant="dark" onClick={returnRecord}>Remove from Wishlist</Button>
         </div>
       </Accordion.Body>
+      {console.warn(wishlistRecord)}
     </Accordion.Item>
   );
 }
 
-AccordionRow.propTypes = {
-  borrowedRecord: PropTypes.shape({
+AccordionRowWishlist.propTypes = {
+  wishlistRecord: PropTypes.shape({
     user: PropTypes.object,
     record: PropTypes.object,
     id: PropTypes.number,

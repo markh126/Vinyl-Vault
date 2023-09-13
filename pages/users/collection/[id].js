@@ -69,7 +69,7 @@ export default function Shop() {
         <div className="userCollection-desc-text">
           <h3><em>{userDetails.username}'s Collection</em></h3>
           <div className="text-center my-4">
-            <div id="collectionCards" className="d-flex flex-wrap">
+            <div id="userCollectionCards" className="d-flex flex-wrap user-collection-cards">
               {filteredRecords().map((record) => (
                 <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
               ))}

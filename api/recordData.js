@@ -29,7 +29,12 @@ const getRecordsByUser = (userId, uid) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then(resolve)
+    .then((data) => {
+      // Sort the data by created date in descending order (most recent to least recent)
+      data.sort((a, b) => new Date(a.createdDate) - new Date(b.createdDate));
+
+      resolve(data);
+    })
     .catch(reject);
 });
 

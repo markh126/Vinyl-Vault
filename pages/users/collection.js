@@ -28,7 +28,7 @@ export default function Shop() {
 
   const filteredRecords = () => {
     if (selectedFilter === 'alpha') {
-      return [...records].sort((a, b) => a.name.localeCompare(b.name));
+      return [...records].sort((a, b) => a.name.replace(/^"(.*)"$/, '$1').localeCompare(b.name));
     } if (selectedFilter === 'date') {
       return [...records].sort((b, a) => new Date(a.release_date) - new Date(b.release_date));
     } if (selectedFilter === 'artist') {

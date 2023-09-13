@@ -21,10 +21,10 @@ function Search() {
     const album = formInput.albumName;
     const token = await getSpotifyToken();
     spotifySearch(token, album).then((response) => {
-      if (response) {
-        setSearch(response);
+      if (response && response.albums && response.albums.items.length > 0) {
+        setSearch(response.albums.items);
       } else {
-        alert('No Record Found');
+        alert('No Records Found');
       }
     });
   };
@@ -44,6 +44,7 @@ function Search() {
             <SpotifyCard key={album.id} recordObj={album} />
           ))}
         </div>
+        {console.warn(search)}
       </div>
     </>
   );
