@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
+import { Accordion } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
+import AccordionRowWishlist from '../../components/WishlistAccordion';
 import { getWishlistRecord } from '../../api/wishlistData';
-import WishlistCard from '../../components/WishlistCard';
 
 export default function WishlistDisplay() {
   const [wishlist, setWishlist] = useState([]);
@@ -20,21 +20,14 @@ export default function WishlistDisplay() {
 
   return (
     <>
-      <Head>
-        <title>My Wishlist</title>
-      </Head>
-      <div id="userWishlistPage" className="userWishlist-page">
-        <div className="userWishlist-desc-text">
-          <h3><em>My Wishlist</em></h3>
-          <div className="text-center my-4">
-            <div id="wishlistCards" className="d-flex flex-wrap">
-              {wishlist.map((wishRecord) => (
-                <WishlistCard key={wishRecord.id} recordObj={wishRecord.record} onUpdate={getWishlist} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      <h3><em>Wishlist</em></h3>
+      <Accordion>
+        {wishlist.length > 0 ? (
+          wishlist.map((wish) => (
+            <AccordionRowWishlist className="wishlistItemDesc" key={wish.id} wishlistRecord={wish} keyNumber={wishlist.indexOf(wish)} onUpdate={getWishlist} />
+          ))
+        ) : ("You haven't added any records to your wishlist!")}
+      </Accordion>
     </>
   );
 }

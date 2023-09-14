@@ -21,10 +21,10 @@ function Search() {
     const album = formInput.albumName;
     const token = await getSpotifyToken();
     spotifySearch(token, album).then((response) => {
-      if (response) {
-        setSearch(response);
+      if (response && response.albums && response.albums.items.length > 0) {
+        setSearch(response.albums.items);
       } else {
-        alert('No Record Found');
+        alert('No Records Found');
       }
     });
   };
@@ -35,7 +35,7 @@ function Search() {
         <title>Album Search</title>
       </Head>
       <Form onSubmit={handleSubmit} className="search-album">
-        <Form.Control type="text" placeholder="Album Name" name="albumName" value={formInput.albumName} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="Record Search.." name="albumName" value={formInput.albumName} onChange={handleChange} required />
         <Button className="search-btn" type="submit">Search</Button>
       </Form>
       <div className="text-center my-4">
@@ -44,6 +44,7 @@ function Search() {
             <SpotifyCard key={album.id} recordObj={album} />
           ))}
         </div>
+        {console.warn(search)}
       </div>
     </>
   );

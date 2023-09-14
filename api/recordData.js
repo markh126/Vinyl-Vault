@@ -83,6 +83,26 @@ const deleteRecord = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const searchRecords = (userId, searchQuery, uid) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/records?userId=${userId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${uid}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      let filteredData = data;
+      if (searchQuery) {
+        filteredData = data.filter((record) => record.name.toLowerCase().includes(searchQuery.toLowerCase())
+          || record.artist.toLowerCase().includes(searchQuery.toLowerCase()));
+      }
+      resolve(filteredData);
+    })
+    .catch(reject);
+});
+
 export {
   getRecords,
   getSingleRecord,
@@ -91,4 +111,5 @@ export {
   createRecord,
   editRecord,
   deleteRecord,
+  searchRecords,
 };

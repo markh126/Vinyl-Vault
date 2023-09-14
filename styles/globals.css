@@ -21,7 +21,22 @@ body {
   background-color: white;
 }
 
+.nav {
+  margin: 35px;
+}
+
+.nav-bar {
+  color: white;
+  margin-bottom: 25px;
+}
+
 .wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 6px;
+}
+
+.trash-btn {
   position: absolute;
   top: 10px;
   right: 6px;
@@ -76,7 +91,49 @@ body {
   margin: 0px 4px 0px 4px;
 }
 
+.wishlistRecordContainer {
+  height: 75px;
+}
+
+.wishlistRecordContainer > button {
+  height: inherit;
+  padding-left: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.wish-head {
+  display: flex;
+  align-items: center;
+  height: inherit;
+  white-space: nowrap;
+  text-indent: 24px;
+  width: fit-content;
+  line-height: 1.2;
+}
+
+.wish-img {
+  height: inherit;
+  width: 72px;
+}
+
+.removeWishContainer {
+  display: flex;
+  width: 100%;
+  padding: 4px 8px;
+  justify-content: flex-end;
+}
+
+.removeWishContainer > .returnBtn {
+  margin: 0px 4px 0px 4px;
+}
+
 .collection-cards {
+  grid-gap: 12px;
+  margin-bottom: 15px;
+}
+
+.user-collection-cards {
   grid-gap: 12px;
   margin-bottom: 15px;
 }
