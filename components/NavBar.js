@@ -11,7 +11,7 @@ import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar className="nav-bar" collapseOnSelect expand="lg">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>Vinyl Vault</Navbar.Brand>
@@ -35,7 +35,7 @@ export default function NavBar() {
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>
             </Link>
-            <Button variant="danger" onClick={signOut}>
+            <Button variant="outline-dark" style={{ position: 'inherit' }} onClick={signOut}>
               Sign Out
             </Button>
           </Nav>

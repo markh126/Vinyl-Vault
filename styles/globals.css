@@ -25,6 +25,11 @@ body {
   margin: 35px;
 }
 
+.nav-bar {
+  color: white;
+  margin-bottom: 25px;
+}
+
 .wishlist-btn {
   position: absolute;
   top: 10px;

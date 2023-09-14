@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useRouter } from 'next/router';
-import { getRecordsByUser } from '../../api/recordData';
+import { searchRecords } from '../../api/recordData';
 import RecordCard from '../../components/recordCard';
 import { useAuth } from '../../utils/context/authContext';
 import DropdownFilter from '../../components/FilterDropdown';
@@ -13,17 +13,25 @@ export default function Shop() {
   const router = useRouter();
   const [records, setRecords] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const getAllRecords = () => {
-    getRecordsByUser(user.id, user.uid).then(setRecords);
+    searchRecords(user.id, searchQuery, user.uid)
+      .then((Data) => {
+        setRecords(Data);
+      });
   };
 
   useEffect(() => {
-    getAllRecords(user.id);
-  }, []);
+    getAllRecords();
+  }, [searchQuery]);
 
   const handleFilterChange = (filterValue) => {
     setSelectedFilter(filterValue);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   const filteredRecords = () => {
@@ -56,10 +64,10 @@ export default function Shop() {
       <Head>
         <title>My Collection</title>
       </Head>
-      <DropdownFilter onFilterChange={handleFilterChange} />
       <div id="userCollectionPage" className="userCollection-page">
         <div className="userCollection-desc-text">
           <h3><em>My Collection</em></h3>
+          <DropdownFilter onFilterChange={handleFilterChange} />
           <Button
             className="new-record-btn"
             variant="dark"
@@ -70,12 +78,22 @@ export default function Shop() {
             }}
           >
             Add a New Record
-          </Button>
-          <div className="text-center my-4">
-            <div id="collectionCards" className="d-flex flex-wrap collection-cards">
-              {filteredRecords().map((record) => (
-                <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
-              ))}
+          </Button><br />
+          <Form>
+            <Form.Control
+              type="text"
+              placeholder="Search your records"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+          </Form>
+          <div className="container d-flex align-items-center">
+            <div className="text-center my-4 flex-row">
+              <div id="collectionCards" className="d-flex flex-wrap collection-cards justify-content-center">
+                {filteredRecords().map((record) => (
+                  <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ function Search() {
         <title>Album Search</title>
       </Head>
       <Form onSubmit={handleSubmit} className="search-album">
-        <Form.Control type="text" placeholder="Album Name" name="albumName" value={formInput.albumName} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="Record Search.." name="albumName" value={formInput.albumName} onChange={handleChange} required />
         <Button className="search-btn" type="submit">Search</Button>
       </Form>
       <div className="text-center my-4">
