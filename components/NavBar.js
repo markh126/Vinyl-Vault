@@ -5,17 +5,12 @@ import {
   Navbar, //
   Container,
   Nav,
-  Button,
 } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
     <Navbar className="nav-bar" collapseOnSelect expand="lg">
       <Container>
-        <Link passHref href="/">
-          <Navbar.Brand>Vinyl Vault</Navbar.Brand>
-        </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="m-auto">
@@ -35,9 +30,6 @@ export default function NavBar() {
             <Link passHref href="/profile">
               <Nav.Link>Profile</Nav.Link>
             </Link>
-            <Button variant="outline-dark" style={{ position: 'inherit' }} onClick={signOut}>
-              Sign Out
-            </Button>
           </Nav>
         </Navbar.Collapse>
       </Container>

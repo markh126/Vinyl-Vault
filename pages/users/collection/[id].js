@@ -68,11 +68,13 @@ export default function Shop() {
       <div id="userCollectionPage" className="userCollection-page">
         <div className="userCollection-desc-text">
           <h3><em>{userDetails.username}'s Collection</em></h3>
-          <div className="text-center my-4">
-            <div id="userCollectionCards" className="d-flex flex-wrap user-collection-cards">
-              {filteredRecords().map((record) => (
-                <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
-              ))}
+          <div className="container d-flex align-items-center">
+            <div className="text-center my-4 flex-row">
+              <div id="userCollectionCards" className="d-flex flex-wrap user-collection-cards justify-content-center">
+                {filteredRecords().map((record) => (
+                  <RecordCard key={record.id} recordObj={record} onUpdate={getAllRecords} />
+                ))}
+              </div>
             </div>
           </div>
         </div>

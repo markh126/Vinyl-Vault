@@ -15,8 +15,8 @@ function UserCard({ userObj }) {
   };
 
   return (
-    <Card className="product-card" style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={userObj.profile_image_url} alt={userObj.username} onClick={itemClick} style={{ height: '250px' }} />
+    <Card className="product-card" style={{ width: '300px', height: '250px', marginBottom: '250px' }}>
+      <Card.Img className="card-img" src={userObj.profile_image_url} alt={userObj.username} onClick={itemClick} />
       <Card.Body className="product-content" onClick={itemClick} style={{ marginTop: '0px' }}>
         <Card.Title className="view-btn" style={{ fontFamily: 'Crimson Text Bold', fontSize: 22 }}>
           {userObj.username}

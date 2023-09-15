@@ -137,3 +137,20 @@ body {
   grid-gap: 12px;
   margin-bottom: 15px;
 }
+
+.user-cards {
+  grid-gap: 12px;
+  margin-bottom: 15px;
+}
+
+.user-profile-page {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.other-user-profile-page {
+  margin: 40px auto;
+  text-align: center;
+}
+
+

@@ -17,9 +17,10 @@ function Signin() {
         paddingBlock: '0 5rem',
       }}
     >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
-      <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
+      <h2 className="text-center" style={{ marginTop: '-100px', marginBottom: '-50px' }}>
+        <img src="/5.png" width="700px" height="700px" alt="icon" className="nav-logo" />
+      </h2>
+      <Button variant="outline-dark" size="lg" className="copy-btn" onClick={signIn}>
         Sign In
       </Button>
     </div>

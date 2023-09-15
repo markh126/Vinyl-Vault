@@ -1,15 +1,29 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
-import { createRecord } from '../api/recordData';
+import { createRecord, getRecordsByUser } from '../api/recordData';
 
 function SpotifyCard({ recordObj }) {
+  const [userRecords, setUserRecords] = useState([]);
   const { user } = useAuth();
+
+  const getAllRecords = async () => {
+    try {
+      const records = await getRecordsByUser(user.id, user.uid);
+      setUserRecords(records);
+    } catch (error) {
+      console.error('Error fetching user records:', error);
+    }
+  };
+
+  useEffect(() => {
+    getAllRecords();
+  }, [user, userRecords]);
 
   const handleAddToCollection = async () => {
     const {
@@ -26,8 +40,15 @@ function SpotifyCard({ recordObj }) {
     };
 
     try {
-      await createRecord(record, user.uid);
-      alert('Record added to collection');
+      // Check if any record in userRecords has the same spotifyId
+      const isRecordInCollection = userRecords.some((userRecord) => userRecord.spotify_id === record.spotifyId);
+
+      if (isRecordInCollection) {
+        alert('Already in collection');
+      } else {
+        await createRecord(record, user.uid);
+        alert('Record added to collection');
+      }
     } catch (error) {
       console.error('Error adding record to collection:', error);
     }

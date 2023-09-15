@@ -29,7 +29,6 @@ const spotifySearch = (token, albumTitle) => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.warn('Response Data:', data);
       resolve(data);
     })
     .catch((error) => {

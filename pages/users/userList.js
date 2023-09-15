@@ -24,11 +24,15 @@ export default function Users() {
       <Head>
         <title>Users</title>
       </Head>
-      <div className="text-center my-4">
-        <div id="userCards" className="d-flex flex-wrap">
-          {users.map((userInfo) => (
-            <UserCard key={userInfo.id} userObj={userInfo} onUpdate={getAllUsers} />
-          ))}
+      <div className="users-desc-text">
+        <div className="container d-flex align-items-center">
+          <div className="text-center my-4 flex-row">
+            <div id="userCards" className="d-flex flex-wrap user-cards justify-content-center">
+              {users.map((userInfo) => (
+                <UserCard key={userInfo.id} userObj={userInfo} onUpdate={getAllUsers} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>

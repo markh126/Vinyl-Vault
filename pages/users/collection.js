@@ -64,29 +64,38 @@ export default function Shop() {
       <Head>
         <title>My Collection</title>
       </Head>
+      <h1 className="text-center" style={{ marginTop: '-100px', marginBottom: '-50px' }}>
+        <img src="/5.png" width="400px" height="400px" alt="icon" className="nav-logo" />
+      </h1>
+      <div className="text-center" style={{ marginBottom: '10px' }}>
+        <DropdownFilter onFilterChange={handleFilterChange} />
+      </div>
+      <div className="d-flex justify-content-center" style={{ marginBottom: '10px' }}>
+        <Form>
+          <Form.Control
+            className="text-center"
+            type="text"
+            placeholder="Search your records"
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+        </Form>
+      </div>
       <div id="userCollectionPage" className="userCollection-page">
         <div className="userCollection-desc-text">
-          <h3><em>My Collection</em></h3>
-          <DropdownFilter onFilterChange={handleFilterChange} />
-          <Button
-            className="new-record-btn"
-            variant="dark"
-            type="button"
-            size="med"
-            onClick={() => {
-              router.push('/users/recordSearch');
-            }}
-          >
-            Add a New Record
-          </Button><br />
-          <Form>
-            <Form.Control
-              type="text"
-              placeholder="Search your records"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
-          </Form>
+          <div className="container text-center">
+            <Button
+              className="new-record-btn"
+              variant="dark"
+              type="button"
+              size="med"
+              onClick={() => {
+                router.push('/users/recordSearch');
+              }}
+            >
+              Add a New Record
+            </Button>
+          </div>
           <div className="container d-flex align-items-center">
             <div className="text-center my-4 flex-row">
               <div id="collectionCards" className="d-flex flex-wrap collection-cards justify-content-center">
