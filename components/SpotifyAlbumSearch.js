@@ -44,7 +44,6 @@ function Search() {
             <SpotifyCard key={album.id} recordObj={album} />
           ))}
         </div>
-        {console.warn(search)}
       </div>
     </>
   );

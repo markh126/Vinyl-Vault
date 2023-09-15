@@ -17,7 +17,7 @@ const DropdownFilter = ({ onFilterChange }) => {
         value={filter}
         onChange={handleChangeFilter}
       >
-        <option value="">-- Please Select --</option>
+        <option value="">-- Select A Filter --</option>
         <option value="alpha">A-Z</option>
         <option value="date">Release Date</option>
         <option value="artist">Artist</option>

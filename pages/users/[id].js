@@ -23,34 +23,36 @@ export default function UserProfile() {
       <Head>
         <title>{userDetails.username}</title>
       </Head>
-      <div className="user-profile-page">
-        <Image
-          className="user-image"
-          src={userDetails.profile_image_url}
-          alt={userDetails.name}
-          style={{
-            width: '300px', borderRadius: '0px', border: '3px solid #014415', boxShadow: '6px 6px rgb(216, 208, 208)',
-          }}
-        />
-      </div>
-      <div className="profile-font" style={{ marginTop: '35px' }}>
-        <h1 className="post-details-title">{userDetails.first_name} {userDetails.last_name}</h1>
-        <h4 className="post-details-text"><em>{userDetails.username}</em> </h4>
-        <h4 className="post-details-title">{userDetails.email}</h4>
-        <h5 className="post-details-text">Bio: {userDetails.bio} </h5>
-      </div>
-      <div>
-        <Button
-          variant="dark"
-          type="button"
-          size="med"
-          className="collection-btn"
-          onClick={() => {
-            router.push(`collection/${userDetails.id}`);
-          }}
-        >
-          View {userDetails.username}'s Collection
-        </Button>
+      <div className="other-user-profile-page">
+        <div>
+          <Image
+            className="user-image"
+            src={userDetails.profile_image_url}
+            alt={userDetails.name}
+            style={{
+              width: '300px', borderRadius: '0px', border: '3px solid #000000', boxShadow: '6px 6px rgb(216, 208, 208)',
+            }}
+          />
+        </div>
+        <div className="profile-font" style={{ marginTop: '35px' }}>
+          <h1 className="post-details-title">{userDetails.first_name} {userDetails.last_name}</h1>
+          <h4 className="post-details-text"><em>{userDetails.username}</em> </h4>
+          <h4 className="post-details-title">{userDetails.email}</h4>
+          <h5 className="post-details-text">Bio: {userDetails.bio} </h5>
+        </div>
+        <div>
+          <Button
+            variant="dark"
+            type="button"
+            size="med"
+            className="collection-btn"
+            onClick={() => {
+              router.push(`collection/${userDetails.id}`);
+            }}
+          >
+            View {userDetails.username}'s Collection
+          </Button>
+        </div>
       </div>
     </>
   );
