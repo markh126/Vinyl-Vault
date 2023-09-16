@@ -10,7 +10,7 @@ export default function AccordionRowWishlist({ wishlistRecord, onUpdate, keyNumb
   const [tracks, setTracks] = useState([]);
   const { user } = useAuth();
   const returnRecord = () => {
-    if (window.confirm(`Return ${wishlistRecord.record.name} to ${wishlistRecord.record.user.first_name}?`)) {
+    if (window.confirm(`Remove ${wishlistRecord.record.name} from wishlist?`)) {
       deleteWishlistRecord(wishlistRecord.record.id, user.uid).then(() => onUpdate());
     }
   };
@@ -67,7 +67,6 @@ export default function AccordionRowWishlist({ wishlistRecord, onUpdate, keyNumb
           <Button className="removeWishBtn" variant="dark" onClick={returnRecord}>Remove from Wishlist</Button>
         </div>
       </Accordion.Body>
-      {console.warn(wishlistRecord)}
     </Accordion.Item>
   );
 }

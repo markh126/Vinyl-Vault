@@ -34,9 +34,16 @@ function Search() {
       <Head>
         <title>Album Search</title>
       </Head>
+      <h1 className="text-center" style={{ marginTop: '-100px', marginBottom: '-50px' }}>
+        <img src="/5.png" width="400px" height="400px" alt="icon" className="nav-logo" />
+      </h1>
       <Form onSubmit={handleSubmit} className="search-album">
-        <Form.Control type="text" placeholder="Record Search.." name="albumName" value={formInput.albumName} onChange={handleChange} required />
-        <Button className="search-btn" type="submit">Search</Button>
+        <div className="d-flex justify-content-center" style={{ marginBottom: '10px' }}>
+          <Form.Control className="text-center" type="text" placeholder="Record Search.." name="albumName" value={formInput.albumName} onChange={handleChange} required />
+        </div><br />
+        <div className="d-flex justify-content-center">
+          <Button variant="outline-dark" className="search-btn" type="submit">Search</Button>
+        </div>
       </Form>
       <div className="text-center my-4">
         <div id="searchAlbums" className="d-flex flex-wrap">

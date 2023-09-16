@@ -5,7 +5,6 @@ const RecordSearch = () => {
   const { user } = useAuth();
   return (
     <div>
-      <h2>Add a New Record</h2>
       <Search user={user} />
     </div>
   );
