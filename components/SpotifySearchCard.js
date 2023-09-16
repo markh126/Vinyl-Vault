@@ -23,7 +23,7 @@ function SpotifyCard({ recordObj }) {
 
   useEffect(() => {
     getAllRecords();
-  }, [user, userRecords]);
+  }, [user, user.id]);
 
   const handleAddToCollection = async () => {
     const {
