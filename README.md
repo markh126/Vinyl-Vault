@@ -14,7 +14,7 @@ This app is tailor-made for avid collectors with an extensive archive of records
 - View record collection
 - Add new records to collection
 - Update record information
-- View other users and thei collection
+- View other users and their collection
 - Add other users' records to your wishlist
 - Borrow records from other users
 
