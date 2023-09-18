@@ -23,7 +23,7 @@ export default function UserProfile() {
       <Head>
         <title>{userDetails.username}</title>
       </Head>
-      <div className="other-user-profile-page">
+      <div className="other-user-profile-page" style={{ fontFamily: 'Ysabeau Office' }}>
         <div>
           <Image
             className="user-image"

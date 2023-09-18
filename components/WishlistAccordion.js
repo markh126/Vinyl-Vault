@@ -45,7 +45,7 @@ export default function AccordionRowWishlist({ wishlistRecord, onUpdate, keyNumb
   }, [wishlistRecord]);
 
   return (
-    <Accordion.Item eventKey={keyNumber}>
+    <Accordion.Item style={{ fontFamily: 'Ysabeau Office' }} eventKey={keyNumber}>
       <Accordion.Header className="wishlistRecordContainer">
         <Image className="wish-img" src={wishlistRecord.record.record_image_url} />
         <div className="wish-head">{wishlistRecord.record.name} - {wishlistRecord.record.artist}</div>

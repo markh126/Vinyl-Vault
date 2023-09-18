@@ -69,10 +69,10 @@ function RecordCard({ recordObj, onUpdate }) {
   return (
     <div>
       <Flippy
-        flipOnClick={false}
+        flipOnClick
         flipDirection="horizontal"
         ref={ref}
-        style={{ width: '300px', height: '350px' }}
+        style={{ width: '300px', height: '350px', fontFamily: 'Ysabeau Office' }}
       >
         <FrontSide>
           <img className="record-img" src={recordObj.record_image_url} alt={recordObj.name} style={{ height: '250px' }} onClick={itemClick} />
@@ -105,7 +105,7 @@ function RecordCard({ recordObj, onUpdate }) {
             ) : ('')}
           </div>
         </FrontSide>
-        <BackSide onClick={() => { ref.current.toggle(); }}>
+        <BackSide className="back" onClick={() => { ref.current.toggle(); }}>
           <h3><em>{recordObj.artist}</em></h3>
           <div className="track-list">
             <h4><em>Tracks:</em></h4>

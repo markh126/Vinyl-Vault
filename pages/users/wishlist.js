@@ -20,7 +20,7 @@ export default function WishlistDisplay() {
 
   return (
     <>
-      <h3><em>Wishlist</em></h3>
+      <h3 style={{ fontFamily: 'Ysabeau Office' }}><em>Wishlist</em></h3>
       <Accordion>
         {wishlist.length > 0 ? (
           wishlist.map((wish) => (

@@ -45,7 +45,7 @@ export default function AccordionRow({ borrowedRecord, onUpdate, keyNumber }) {
   }, [borrowedRecord]);
 
   return (
-    <Accordion.Item eventKey={keyNumber}>
+    <Accordion.Item style={{ fontFamily: 'Ysabeau Office' }} eventKey={keyNumber}>
       <Accordion.Header className="borrowedRecordContainer">
         <Image className="borrow-img" src={borrowedRecord.record.record_image_url} />
         <div className="borrow-head">{borrowedRecord.record.name} - {borrowedRecord.record.artist}</div>

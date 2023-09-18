@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.css';
+@import 'https://fonts.googleapis.com/css2?family=Ysabeau+Office&display=swap';
 
 html,
 body {
@@ -48,10 +49,15 @@ body {
   right: 6px;
 }
 
-.track-list {
-  height: 285px;
+/* .track-list {
+  max-height:max-content;
   overflow-y: scroll;
-  overflow-x:hidden;
+  overflow-x: hidden;
+} */
+
+.track-list {
+  height: 80%;
+  overflow-y: scroll;
 }
 
 .borrowedRecordContainer {
