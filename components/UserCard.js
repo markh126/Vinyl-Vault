@@ -15,13 +15,26 @@ function UserCard({ userObj }) {
   };
 
   return (
-    <Card className="product-card" style={{ width: '300px', height: '250px', marginBottom: '250px' }}>
-      <Card.Img className="card-img" style={{ height: '397px', width: '298px' }} src={userObj.profile_image_url} alt={userObj.username} onClick={itemClick} />
+    <Card
+      className="product-card"
+      style={{
+        width: '300px', height: '250px', marginBottom: '250px', fontFamily: 'Ysabeau Office',
+      }}
+    >
+      <Card.Img
+        className="card-img"
+        style={{
+          height: '397px', width: '298px', border: '3px solid #000000', boxShadow: '6px 6px rgb(216, 208, 208)',
+        }}
+        src={userObj.profile_image_url}
+        alt={userObj.username}
+        onClick={itemClick}
+      />
       <Card.Body className="product-content" onClick={itemClick} style={{ marginTop: '0px' }}>
-        <Card.Title className="view-btn" style={{ fontFamily: 'Crimson Text Bold', fontSize: 22 }}>
+        <Card.Title className="view-btn" style={{ fontFamily: 'Ysabeau Office', fontSize: 22 }}>
           {userObj.username}
         </Card.Title>
-        <Card.Subtitle style={{ fontFamily: 'Crimson Text Bold', fontSize: 18 }}>
+        <Card.Subtitle style={{ fontFamily: 'Ysabeau Office', fontSize: 18 }}>
           {userObj.bio}
         </Card.Subtitle>
       </Card.Body>

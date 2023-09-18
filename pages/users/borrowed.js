@@ -20,7 +20,7 @@ export default function BorrowedDisplay() {
 
   return (
     <>
-      <h3><em>Borrowed Records </em></h3>
+      <h3 style={{ fontFamily: 'Ysabeau Office' }}><em>Borrowed Records </em></h3>
       <Accordion>
         {borrowed.length > 0 ? (
           borrowed.map((borrow) => (

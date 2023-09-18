@@ -64,10 +64,12 @@ export default function Shop() {
       <Head>
         <title>{userDetails.username}'s Collection</title>
       </Head>
-      <DropdownFilter onFilterChange={handleFilterChange} />
       <div id="userCollectionPage" className="userCollection-page">
         <div className="userCollection-desc-text">
-          <h3><em>{userDetails.username}'s Collection</em></h3>
+          <h3 className="text-center"><em>{userDetails.username}'s Collection</em></h3>
+          <div className="text-center" style={{ marginBottom: '10px', fontFamily: 'Ysabeau Office' }}>
+            <DropdownFilter onFilterChange={handleFilterChange} />
+          </div>
           <div className="container d-flex align-items-center">
             <div className="text-center my-4 flex-row">
               <div id="userCollectionCards" className="d-flex flex-wrap user-collection-cards justify-content-center">

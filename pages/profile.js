@@ -30,7 +30,7 @@ export default function UserProfile() {
       <Head>
         <title>My Profile</title>
       </Head>
-      <div className="user-profile-page">
+      <div className="user-profile-page" style={{ fontFamily: 'Ysabeau Office' }}>
         <div>
           <Image
             className="user-image"

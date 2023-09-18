@@ -67,13 +67,14 @@ export default function Shop() {
       <h1 className="text-center" style={{ marginTop: '-100px', marginBottom: '-50px' }}>
         <img src="/5.png" width="400px" height="400px" alt="icon" className="nav-logo" />
       </h1>
-      <div className="text-center" style={{ marginBottom: '10px' }}>
+      <div className="text-center" style={{ marginBottom: '10px', fontFamily: 'Ysabeau Office' }}>
         <DropdownFilter onFilterChange={handleFilterChange} />
       </div>
       <div className="d-flex justify-content-center" style={{ marginBottom: '10px' }}>
         <Form>
           <Form.Control
             className="text-center"
+            style={{ fontFamily: 'Ysabeau Office' }}
             type="text"
             placeholder="Search your records"
             value={searchQuery}
@@ -86,6 +87,7 @@ export default function Shop() {
           <div className="container text-center">
             <Button
               className="new-record-btn"
+              style={{ fontFamily: 'Ysabeau Office' }}
               variant="dark"
               type="button"
               size="med"
