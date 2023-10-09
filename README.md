@@ -28,9 +28,6 @@ Other Users Collection
 User List
 <img width="1464" alt="Screenshot 2023-10-09 at 3 20 47 PM" src="https://github.com/markh126/Vinyl-Vault/assets/114036621/c47f8f24-9d25-4f0d-b7cb-648b2d144096">
 
-
-
-
         
 ## Contributors:
 - [Mark Hamilton](https://github.com/markh126)
