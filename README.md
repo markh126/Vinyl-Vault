@@ -19,8 +19,8 @@ This app is tailor-made for avid collectors with an extensive archive of records
 - Borrow records from other users
 
 ### Screenshots
-Homepage/Collection
-<img width="1466" alt="Screenshot 2023-10-09 at 3 18 49 PM" src="https://github.com/markh126/Vinyl-Vault/assets/114036621/c8bf2861-a5b5-4585-a083-c995e0ec36c2">
+Homepage/Collection(Showing track info on flipside of card)
+<img width="1460" alt="Screenshot 2023-10-09 at 3 22 00 PM" src="https://github.com/markh126/Vinyl-Vault/assets/114036621/ed89dbdb-73c3-4c57-8cd0-98338c1b5757">
 Wishlist(From other users' records)
 <img width="1465" alt="Screenshot 2023-10-09 at 3 20 20 PM" src="https://github.com/markh126/Vinyl-Vault/assets/114036621/1dd2bea8-fb89-4af1-a229-89f710ee4fa0">
 Other Users Collection
