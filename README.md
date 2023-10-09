@@ -20,12 +20,13 @@ This app is tailor-made for avid collectors with an extensive archive of records
 
 ### Screenshots
 Homepage/Collection
-
-Wishlist(From other users' records
-<img width="1466" alt="Screenshot 2023-10-09 at 3 18 49 PM" src="https://github.com/markh126/Vinyl-Vault/assets/114036621/c8bf2861-a5b5-4585-a083-c995e0ec36c2">)
-![Screenshot 2023-08-26 at 11 09 30 AM](https://github.com/markh126/Vinyl-Vault/assets/114036621/88fc2dc6-0111-421a-91e2-78e9241ddd00)
-Other Users Profile Page(With link to their collection)
-![Screenshot 2023-08-26 at 11 10 25 AM](https://github.com/markh126/Vinyl-Vault/assets/114036621/0c1d0bd3-3c14-4444-8a0d-65bc52fefa32)
+<img width="1466" alt="Screenshot 2023-10-09 at 3 18 49 PM" src="https://github.com/markh126/Vinyl-Vault/assets/114036621/c8bf2861-a5b5-4585-a083-c995e0ec36c2">
+Wishlist(From other users' records)
+<img width="1465" alt="Screenshot 2023-10-09 at 3 20 20 PM" src="https://github.com/markh126/Vinyl-Vault/assets/114036621/1dd2bea8-fb89-4af1-a229-89f710ee4fa0">
+Other Users Collection
+<img width="1466" alt="Screenshot 2023-10-09 at 3 21 18 PM" src="https://github.com/markh126/Vinyl-Vault/assets/114036621/47f858d7-aaf6-4597-afde-d487874e5954">
+User List
+<img width="1464" alt="Screenshot 2023-10-09 at 3 20 47 PM" src="https://github.com/markh126/Vinyl-Vault/assets/114036621/c47f8f24-9d25-4f0d-b7cb-648b2d144096">
 
 
 
